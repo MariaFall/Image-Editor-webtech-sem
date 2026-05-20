@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Úprava obrázků</title>
+    <link rel="manifest" href="manifest.json">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="checkbox"] {
+            width: auto;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .reset-button {
+            background-color: #dc3545;
+        }
+        .reset-button:hover {
+            background-color: #c82333;
+        }
+        .image-container {
+            width: min-content;
+            min-width: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+        }
+        canvas {
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            max-width: 100%;
+            height: auto;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Editor obrázků</h1>
+    <form id="image-form">
+        <label for="image-upload">Nahrát obrázek:</label>
+        <input type="file" id="image-upload" name="image" accept="image/*" required>
+
+        <h2>Úprava efektů</h2>
+        <label for="brightness">Jas:</label>
+        <input type="range" id="brightness" name="brightness" min="-100" max="100" value="0">
+
+        <label for="solarization">Solarizace:</label>
+        <input type="checkbox" id="solarization" name="solarization" value="1">
+
+        <label for="transposition">Transpozice:</label>
+        <select id="transposition" name="transposition">
+            <option value="none">Žádná</option>
+            <option value="flip_lr">Zrcadlové vodorovné</option>
+            <option value="flip_tb">Zrcadlové svislé</option>
+            <option value="rotate_90">Rotace 90°</option>
+            <option value="rotate_180">Rotace 180°</option>
+            <option value="rotate_270">Rotace 270°</option>
+        </select>
+
+        <label for="negative-type">Typ negativu:</label>
+        <select id="negative-type" name="negative-type">
+            <option value="none">Žádný</option>
+            <option value="color">Barevný</option>
+            <option value="bw">Černobílý</option>
+        </select>
+
+        <label for="resize">Změna velikosti (%):</label>
+        <input type="range" id="resize" name="resize" min="1" max="200" value="100">
+
+        <label for="edge-detection">Zvýraznění hran:</label>
+        <select id="edge-detection" name="edge-detection">
+            <option value="none">Žádné</option>
+            <option value="sobel">Sobel</option>
+            <option value="laplacian">Laplacian</option>
+            <option value="prewitt">Prewitt</option>
+        </select>
+
+        <button type="submit">Aplikovat</button>
+        <button type="button" id="reset-button" class="reset-button">Reset</button>
+    </form>
+
+    <div class="image-container">
+        <h2>Výsledek</h2>
+        <canvas id="canvas"></canvas>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
