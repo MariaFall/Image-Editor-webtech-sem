@@ -1,4 +1,3 @@
-// sw.js
 const CACHE_NAME = 'image-editor-v1';
 const ASSETS = [
     '/',
