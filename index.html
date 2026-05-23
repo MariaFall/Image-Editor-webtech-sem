@@ -49,6 +49,12 @@
         button:hover {
             background-color: #218838;
         }
+        .secondary-button {
+            background-color: #007bff;
+        }
+        .secondary-button:hover {
+            background-color: #0069d9;
+        }
         .reset-button {
             background-color: #dc3545;
         }
@@ -75,13 +81,24 @@
             height: auto;
             display: none;
         }
+        video {
+            width: 100%;
+            border-radius: 4px;
+            background: #000;
+            display: none;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
     <h1>Editor obrázků</h1>
     <form id="image-form">
-        <label for="image-upload">Nahrát obrázek:</label>
-        <input type="file" id="image-upload" name="image" accept="image/*" required>
+        <label for="image-upload">Zdroj obrázku:</label>
+        <input type="file" id="image-upload" name="image" accept="image/*">
+        
+        <button type="button" id="start-camera" class="secondary-button">Spustit fotoaparát</button>
+        <video id="camera-video" autoplay playsinline></video>
+        <button type="button" id="capture-frame" class="secondary-button" style="display: none;">Vyfotit snímek</button>
 
         <h2>Úprava efektů</h2>
         <label for="brightness">Jas:</label>
