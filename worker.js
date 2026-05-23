@@ -1,4 +1,3 @@
-// worker.js
 self.onmessage = function(e) {
     const imageData = e.data.imageData;
     const width = e.data.width;
