@@ -1,4 +1,4 @@
-# Image Editor (PWA)
+# Image Editor
 
 A web application for image editing using basic graphic transformations and filters. The application uses Web Workers to calculate convolutional filters and a Service Worker for PWA features (offline access and A2HS).
 
